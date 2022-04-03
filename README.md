@@ -63,6 +63,3 @@ I build this little web-app (*and it's really small*) just for fun :muscle:, so 
 > Axios is a simple promise based HTTP client for the browser and node.js. Axios provides a simple to use library in a small package with a very extensible interface.
 > I used Axios to:
 > - Consume the [PokéAPI](https://pokeapi.co/) API and provide the app with all the pokemons need it.
-
-
-git commit -m "Feat - read"
