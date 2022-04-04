@@ -46,7 +46,9 @@ export const HomeTextCover = () => {
         abilities
       </Text>
       {!isLg && <Box marginY="1rem"></Box>}
-      <CustomButton buttonType='primary' onClick={handlePokedex}>See pokemons</CustomButton>
+      <CustomButton buttonType="primary" onClick={handlePokedex}>
+        See pokemons
+      </CustomButton>
     </Flex>
   );
 };

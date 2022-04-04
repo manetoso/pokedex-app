@@ -29,23 +29,23 @@ export const TheTeam = () => {
             '2xl': '1536px',
           }}
         >
-          <VStack spacing='10'>
+          <VStack spacing="10">
             <Box position="relative">
               <Heading
                 fontFamily="fonts.karla"
-                fontSize={{base: '14.5rem', lg: '30rem'}}
-                color='red.900'
+                fontSize={{ base: '14.5rem', lg: '30rem' }}
+                color="red.900"
               >
                 404
               </Heading>
               <Image
                 src="assets/banners/team-rocket-banner.svg"
                 alt="Team Rocket"
-                objectFit='contain'
-                width='100%'
-                height='100%'
-                top={{base: '5', lg: '20'}}
-                position='absolute'
+                objectFit="contain"
+                width="100%"
+                height="100%"
+                top={{ base: '5', lg: '20' }}
+                position="absolute"
               />
             </Box>
             <Text
@@ -57,12 +57,14 @@ export const TheTeam = () => {
               color="brand.black"
               paddingX="4rem"
             >
-              <Text display="inline" color="brand.white" as='span'>
+              <Text display="inline" color="brand.white" as="span">
                 The team rocket
               </Text>{' '}
               has won this time.
             </Text>
-            <CustomButton buttonType="secondary" onClick={handleHome}>Return</CustomButton>
+            <CustomButton buttonType="secondary" onClick={handleHome}>
+              Return
+            </CustomButton>
           </VStack>
         </Flex>
       </Box>

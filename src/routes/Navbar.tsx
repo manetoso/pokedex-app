@@ -5,7 +5,13 @@ import { useNavbar } from '../hooks/useNavbar';
 export const Navbar = () => {
   const { isLg, isOpen, selectedIcon, handleIsOpen, location } = useNavbar();
   return (
-    <Box position="relative" bg="brand.third" boxShadow="lg" zIndex="80" paddingX='1rem'>
+    <Box
+      position="relative"
+      bg="brand.third"
+      boxShadow="lg"
+      zIndex="80"
+      paddingX="1rem"
+    >
       <Flex
         justifyContent="space-between"
         alignItems="center"

@@ -9,7 +9,11 @@ export const Home = () => {
         bgGradient="linear(to-t, brand.primary, brand.third)"
         minH={{ base: 'calc(100vh - 5rem)', lg: 'calc(100vh - 7rem)' }}
       >
-        <Flex justifyContent='center' alignItems='center' minH={{ base: 'calc(100vh - 5rem)', lg: 'calc(100vh - 7rem)' }}>
+        <Flex
+          justifyContent="center"
+          alignItems="center"
+          minH={{ base: 'calc(100vh - 5rem)', lg: 'calc(100vh - 7rem)' }}
+        >
           <Flex
             flexDir={{ base: 'column', lg: 'row-reverse' }}
             paddingX="2rem"

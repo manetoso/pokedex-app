@@ -2,7 +2,6 @@ import { useMediaQuery } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { INavIcons, navIcons } from '../routes/navIcons';
-import { IRoute, routes } from '../routes/routes';
 
 export const useNavbar = () => {
   const [isLg] = useMediaQuery('(min-width: 62em)');
