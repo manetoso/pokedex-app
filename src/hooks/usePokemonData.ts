@@ -23,6 +23,9 @@ export const usePokemonData = (pokemon: SimplePokemon) => {
     const name = pokemonDataResp.name;
     const picture =
       pokemonDataResp.sprites.other?.dream_world.front_default ||
+      pokemonDataResp.sprites.other?.home.front_default ||
+      pokemonDataResp.sprites.other?.['official-artwork'].front_default ||
+      pokemonDataResp.sprites.front_default ||
       'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930';
     const types = pokemonDataResp.types;
     const stats = pokemonDataResp.stats;

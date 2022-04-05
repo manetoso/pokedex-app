@@ -1,53 +1,36 @@
 import {
-  Box,
-  Button,
   Grid,
   Heading,
   HStack,
+  IconButton,
+  Input,
+  InputGroup,
+  InputRightElement,
   Spinner,
   Stack,
-  Stat,
-  StatNumber,
   Text,
   VStack,
 } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import {
+  HiOutlineChevronLeft,
+  HiOutlineChevronRight,
+  HiX,
+} from 'react-icons/hi';
 import { PokemonCard } from '../components';
-import { useAllPokemonList } from '../hooks/useAllPokemonList';
-import { SimplePokemon } from '../interfaces/fetchAllPokemonsResponse';
+import { useAllPokemonList, usePokemonGrid } from '../hooks';
 import { PageAnimation } from './PageAnimation';
 
 export const Pokedex = () => {
   const { isLoading, simplePokemonList } = useAllPokemonList();
-  const [currentPage, setCurrentPage] = useState(0);
-  const [pageLabel, setPageLabel] = useState(1);
-  const [maxPage, setMaxPage] = useState(1);
-  const [filteredPokemons, setFilteredPokemons] = useState<SimplePokemon[]>([]);
-
-  useEffect(() => {
-    setFilteredPokemons(simplePokemonList.slice(currentPage, currentPage + 9));
-    setMaxPage(Math.ceil(simplePokemonList.length / 9));
-  }, [simplePokemonList]);
-
-  useEffect(() => {
-    setFilteredPokemons(simplePokemonList.slice(currentPage, currentPage + 9));
-  }, [currentPage]);
-
-  const nextPage = () => {
-    // if (simplePokemonList.slice(currentPage, currentPage + 9).length > currentPage + 9) {
-    //   alert('si se puede')
-    // } else {
-    //   alert('NO se puede')
-    // }
-    setCurrentPage(currentPage + 9);
-    setPageLabel(oldPageLabel => oldPageLabel + 1);
-  };
-  const prevPage = () => {
-    if (currentPage > 0) {
-      setCurrentPage(currentPage - 9);
-      setPageLabel(oldPageLabel => oldPageLabel - 1);
-    }
-  };
+  const {
+    filteredPokemons,
+    pageLabel,
+    maxPage,
+    search,
+    handleOnSearchChange,
+    handlePagination,
+    handleSearchReset,
+  } = usePokemonGrid(simplePokemonList);
 
   return (
     <PageAnimation>
@@ -55,6 +38,7 @@ export const Pokedex = () => {
         paddingX="1rem"
         marginY="2rem"
         marginX="auto"
+        gap="2rem"
         maxW={{
           base: '640px',
           md: '768px',
@@ -75,9 +59,34 @@ export const Pokedex = () => {
           </Heading>{' '}
           for you to choose your favorite
         </Heading>
-        <Box>
-          <Heading>Input</Heading>
-        </Box>
+        <VStack id="pokemons-top-grid">
+          <InputGroup size="md">
+            <Input
+              value={search}
+              onChange={handleOnSearchChange}
+              placeholder="Ecuentra tu pokemon"
+              variant="filled"
+              rounded="full"
+              boxShadow="lg"
+              bg="blackAlpha.200"
+              color="blackAlpha.700"
+              _placeholder={{
+                color: 'blackAlpha.500',
+              }}
+            />
+            <InputRightElement right="0.5rem">
+              <IconButton
+                size="sm"
+                onClick={handleSearchReset}
+                variant="solid"
+                colorScheme="blackAlpha"
+                rounded="md"
+                aria-label="clear search"
+                icon={<HiX />}
+              />
+            </InputRightElement>
+          </InputGroup>
+        </VStack>
         <VStack>
           {!isLoading ? (
             <Grid
@@ -97,16 +106,30 @@ export const Pokedex = () => {
             <Spinner size="xl" />
           )}
         </VStack>
-        <HStack gap="1rem" pt="1.5rem" justifyContent="center">
-          <Button onClick={prevPage} variant="outline" colorScheme="yellow">
-            Previous
-          </Button>
+        <HStack gap="1rem" justifyContent="center">
+          <IconButton
+            onClick={() => handlePagination(-9, -1)}
+            as="a"
+            href="#pokemons-top-grid"
+            aria-label="Previous Page"
+            variant="outline"
+            colorScheme="yellow"
+            isDisabled={pageLabel === 1 && true}
+            icon={<HiOutlineChevronLeft />}
+          />
           <Text>
             {pageLabel} ... {maxPage}
           </Text>
-          <Button onClick={nextPage} variant="outline" colorScheme="yellow">
-            Next
-          </Button>
+          <IconButton
+            onClick={() => handlePagination(+9, +1)}
+            as="a"
+            href="#pokemons-top-grid"
+            aria-label="Next Page"
+            variant="outline"
+            colorScheme="yellow"
+            isDisabled={pageLabel === maxPage && true}
+            icon={<HiOutlineChevronRight />}
+          />
         </HStack>
       </Stack>
     </PageAnimation>

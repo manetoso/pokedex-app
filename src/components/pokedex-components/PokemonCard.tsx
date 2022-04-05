@@ -5,6 +5,7 @@ import {
   GridItem,
   HStack,
   Image,
+  Skeleton,
   Spinner,
   Tag,
   Text,
@@ -27,11 +28,11 @@ export const PokemonCard = ({ pokemon }: Props) => {
       borderRadius="lg"
       boxShadow="lg"
     >
-      <Grid templateColumns="repeat(3, 1fr)" h="190px" overflowY="hidden">
-        <GridItem h="190px">
+      <Grid templateColumns="repeat(3, 1fr)" h="230px" overflowY="hidden">
+        <GridItem h="230px">
           <VStack
             bg="white"
-            h="190px"
+            h="230px"
             justifyContent="center"
             borderLeftRadius="lg"
           >
@@ -41,6 +42,8 @@ export const PokemonCard = ({ pokemon }: Props) => {
               textShadow="md"
               fontSize="xl"
               fontFamily="fonts.karla"
+              textAlign="center"
+              paddingX="0.25rem"
             >
               {!isLoading ? pokemonData?.name : 'Pokemon name'}
             </Text>
@@ -86,15 +89,17 @@ export const PokemonCard = ({ pokemon }: Props) => {
             </Flex>
           </VStack>
         </GridItem>
-        <GridItem colSpan={2} h="190px">
-          <VStack h="190px" alignItems="center" justifyContent="center">
+        <GridItem colSpan={2} h="230px">
+          <VStack h="230px" alignItems="center" justifyContent="center">
             {!isLoading ? (
               <Image
-                boxSize="140px"
+                boxSize="180px"
                 objectFit="contain"
                 objectPosition="center"
+                borderRadius="lg"
                 src={pokemonData?.picture}
                 alt="pokemon picture"
+                fallback={<Skeleton boxSize="180px" borderRadius="full" />}
               />
             ) : (
               <Spinner size="xl" color="types.normal" />
