@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "start": "vite --host 0.0.0.0",
-    "build": "tsc && vite build",
+    "build": "node ./node-scripts/removeDocs.js && tsc && vite build && node ./node-scripts/rename.js",
     "preview": "vite preview",
     "g-add": "yarn run format && git add .",
     "format": "yarn prettier --write ."
