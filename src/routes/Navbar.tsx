@@ -28,7 +28,7 @@ export const Navbar = () => {
       >
         <Box>
           <Image
-            src="./assets/logo.svg"
+            src="/public/logo.svg"
             alt="app logo"
             w={{ base: '5rem', md: '10rem' }}
           />

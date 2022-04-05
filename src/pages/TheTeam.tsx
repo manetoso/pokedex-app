@@ -39,7 +39,7 @@ export const TheTeam = () => {
                 404
               </Heading>
               <Image
-                src="assets/banners/team-rocket-banner.svg"
+                src="/public/banners/team-rocket-banner.svg"
                 alt="Team Rocket"
                 objectFit="contain"
                 width="100%"

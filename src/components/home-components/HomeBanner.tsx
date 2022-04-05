@@ -5,13 +5,13 @@ export const HomeBanner = () => {
   return (
     <>
       {(!isLg && (
-        <Image objectFit="cover" src="/assets/banners/mobile-home-banner.svg" />
+        <Image objectFit="cover" src="/public/banners/mobile-home-banner.svg" />
       )) || (
         //   <Heading>Is LG</Heading>
         <Image
           w="100%"
           objectFit="cover"
-          src="/assets/banners/mobile-home-banner.svg"
+          src="/public/banners/mobile-home-banner.svg"
         />
       )}
     </>
